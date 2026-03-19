@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  /* Brand — vibrant purple-violet */
+  --brand-50:  #fdf4ff;
+  --brand-100: #fae8ff;
+  --brand-500: #a855f7;
+  --brand-600: #9333ea;
+  --brand-700: #7e22ce;
+
+  /* Sidebar */
+  --sidebar-bg:   #1e1033;
+  --sidebar-text: #c4b5fd;
+  --sidebar-active-bg:  #7c3aed;
+  --sidebar-active-text: #ffffff;
+  --sidebar-hover-bg:   rgba(139,92,246,0.15);
+
+  /* Page bg */
+  --page-bg: #f5f3ff;
+}
+
+* { box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--page-bg); }
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #ede9fe; }
+::-webkit-scrollbar-thumb { background: #a78bfa; border-radius: 3px; }
+
+/* ── Animations ────────────────────────────────────────────── */
+@keyframes fadeIn  { from { opacity:0; transform:translateY(8px);  } to { opacity:1; transform:translateY(0); } }
+@keyframes slideIn { from { opacity:0; transform:translateX(-16px);} to { opacity:1; transform:translateX(0);} }
+@keyframes pulseGlow { 0%,100%{box-shadow:0 0 0 0 rgba(168,85,247,0.3);} 50%{box-shadow:0 0 0 8px rgba(168,85,247,0);} }
+.animate-fade-in  { animation: fadeIn  0.35s ease both; }
+.animate-slide-in { animation: slideIn 0.25s ease both; }
+.animate-pulse-glow { animation: pulseGlow 2s ease infinite; }
+
+/* ── Card hover ─────────────────────────────────────────────── */
+.card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -8px rgba(139,92,246,0.25); }
+
+/* ── Badge styles ───────────────────────────────────────────── */
+.badge-draft     { @apply bg-gray-100    text-gray-600    border border-gray-200;   }
+.badge-published { @apply bg-emerald-50  text-emerald-700 border border-emerald-200;}
+.badge-closed    { @apply bg-red-50      text-red-600     border border-red-200;    }
+.badge-active    { @apply bg-emerald-50  text-emerald-700 border border-emerald-200;}
+.badge-inactive  { @apply bg-orange-50   text-orange-600  border border-orange-200; }
+.badge-blocked   { @apply bg-red-50      text-red-600     border border-red-200;    }
+
+/* ── Input ──────────────────────────────────────────────────── */
+.input-field {
+  @apply w-full px-3 sm:px-4 py-2.5 rounded-xl border border-purple-200 bg-white
+         text-slate-800 placeholder-slate-400 text-sm transition-all duration-200
+         focus:outline-none focus:ring-2 focus:ring-purple-400/30 focus:border-purple-500;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────  */
+.btn-primary {
+  @apply px-4 sm:px-5 py-2 sm:py-2.5 
+         bg-gradient-to-r from-purple-600 to-violet-600
+         hover:from-purple-700 hover:to-violet-700
+         text-white rounded-xl font-semibold text-sm 
+         transition-all duration-200 active:scale-95
+         focus:outline-none focus:ring-2 focus:ring-purple-500/40
+         disabled:opacity-60 disabled:cursor-not-allowed
+         shadow-md shadow-purple-500/20;
+}
+.btn-secondary {
+  @apply px-4 sm:px-5 py-2 sm:py-2.5 bg-white hover:bg-purple-50 
+         text-purple-700 rounded-xl font-semibold text-sm 
+         border border-purple-200 hover:border-purple-400
+         transition-all duration-200 active:scale-95
+         focus:outline-none focus:ring-2 focus:ring-purple-300/50;
+}
+.btn-danger {
+  @apply px-4 sm:px-5 py-2 sm:py-2.5 bg-red-500 hover:bg-red-600 
+         text-white rounded-xl font-semibold text-sm 
+         transition-all duration-200 active:scale-95
+         shadow-md shadow-red-500/20;
+}
+.btn-success {
+  @apply px-4 sm:px-5 py-2 sm:py-2.5 bg-emerald-500 hover:bg-emerald-600 
+         text-white rounded-xl font-semibold text-sm 
+         transition-all duration-200 active:scale-95;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────  */
+.sidebar {
+  background: var(--sidebar-bg);
+}
+.sidebar-link {
+  @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold transition-all;
+  color: var(--sidebar-text);
+}
+.sidebar-link:hover {
+  background: var(--sidebar-hover-bg);
+  color: #e9d5ff;
+}
+.sidebar-link.active {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-active-text);
+  @apply shadow-lg;
+  box-shadow: 0 4px 15px rgba(124,58,237,0.4);
+}
+
+/* ── Page cards ─────────────────────────────────────────────── */
+.page-card {
+  @apply bg-white rounded-2xl border border-purple-100 shadow-sm;
+}
+
+/* ── Gradient backgrounds ───────────────────────────────────── */
+.gradient-brand {
+  background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 40%, #7c3aed 100%);
+}
+.gradient-warm {
+  background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+}
+.gradient-student {
+  background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #a855f7 100%);
+}
+
+/* ── Extra utilities ─────────────────────────────────────────  */
+.border-3 { border-width: 3px; }
