@@ -279,4 +279,18 @@ The new token was not saved correctly after the password change.
 
 ---
 
+## 📸 Screenshots
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Teacher Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Exam Management
+![Exams](screenshots/exams.png)
+
+### Student Dashboard
+![Student](screenshots/student-dashboard.png)
+
 *Exame Portal v1.0.0 — Built with Next.js 14 · MySQL · JWT · Google OAuth*
