@@ -21,6 +21,7 @@ export function getPool() {
   return pool;
 }
 
+
 export async function query(sql, params = []) {
   const db = getPool();
   try {
