@@ -79,7 +79,9 @@ export default function ClassesPage() {
                           </div>
                         </td>
                         <td className="px-5 py-4"><span className={`text-xs px-2.5 py-1 rounded-full font-semibold badge-${c.status}`}>{c.status}</span></td>
-                        <td className="px-5 py-4 text-sm text-slate-500">{new Date(c.created_at).toLocaleDateString()}</td>
+                       <td className="px-5 py-4 text-sm text-slate-500">
+  {c.created_at ? new Date(c.created_at).toLocaleDateString() : '-'}
+</td>
                         <td className="px-5 py-4">
                           <div className="flex items-center justify-end gap-1">
                             <button onClick={()=>toggleStatus(c)} className="p-2 text-slate-400 hover:text-blue-500 rounded-lg hover:bg-blue-50 transition-colors">
@@ -105,7 +107,9 @@ export default function ClassesPage() {
                       <div className="text-sm font-bold text-slate-800 truncate">{c.name}</div>
                       <div className="flex items-center gap-2 mt-1">
                         <span className={`text-xs px-2 py-0.5 rounded-full font-semibold badge-${c.status}`}>{c.status}</span>
-                        <span className="text-xs text-slate-400">{new Date(c.created_at).toLocaleDateString()}</span>
+                       <span className="text-xs text-slate-400">
+  {c.created_at ? new Date(c.created_at).toLocaleDateString() : '-'}
+</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-0.5 shrink-0">
@@ -122,8 +126,8 @@ export default function ClassesPage() {
       </div>
 
       {/* Modal */}
-      {modal!==null&&(
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+     {modal!==null&&(
+  <div className="fixed inset-0 bg-transparent z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
           <div className="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 animate-fade-in">
             <h2 className="text-lg font-extrabold text-slate-800 mb-5">{modal==='create'?'Create New Class':'Edit Class'}</h2>
             <div className="space-y-4">
@@ -149,8 +153,8 @@ export default function ClassesPage() {
       )}
 
       {/* Delete confirm */}
-      {deleteId&&(
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+     {deleteId&&(
+  <div className="fixed inset-0 bg-transparent z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
           <div className="bg-white w-full sm:max-w-sm rounded-t-3xl sm:rounded-3xl shadow-2xl p-6 sm:p-8 text-center animate-fade-in">
             <div className="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center mx-auto mb-4"><Trash2 size={24} className="text-red-500"/></div>
             <h2 className="text-lg font-bold text-slate-800 mb-2">Delete Class?</h2>
