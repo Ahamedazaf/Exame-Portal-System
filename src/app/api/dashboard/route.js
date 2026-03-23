@@ -63,11 +63,19 @@ export async function GET(request) {
   }
 
   const stats = {
-    total_classes: totalClassesRow?.total_classes || 0,
-    total_students: totalStudentsRow?.total_students || 0,
-    total_exams: totalExamsRow?.total_exams || 0,
-    total_results: totalResultsRow?.total_results || 0,
+    total_classes: Number(totalClassesRow?.total_classes || 0),
+    total_students: Number(totalStudentsRow?.total_students || 0),
+    total_exams: Number(totalExamsRow?.total_exams || 0),
+    total_results: Number(totalResultsRow?.total_results || 0),
   };
+
+  console.log('DASHBOARD API RESPONSE:', {
+    totalClassesRow,
+    totalStudentsRow,
+    totalExamsRow,
+    totalResultsRow,
+    stats,
+  });
 
   return ok({ stats, recentExams, chartData });
 }
